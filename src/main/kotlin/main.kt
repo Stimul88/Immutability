@@ -1,4 +1,6 @@
 fun main() {
+
+    println("Иванов Евгений")
     commission()
 
     people()
@@ -9,9 +11,9 @@ fun main() {
 
 
 fun commission() {
-    val amount = 1000
+    val amount = 5000
     val minCommission = 35
-    val transfer  = Math.round(amount * 0.0075)
+    val transfer  = amount * 0.0075
 
     val totalCommission = if (transfer < 35)  minCommission else transfer
 
@@ -19,21 +21,26 @@ fun commission() {
 }
 
 fun people() {
-    val likes = 38
+    val likes = 31
 
-    val people = if (likes === 1 || likes % 10 ===1) "человеку" else "людям"
+    val people = if (likes % 100 in 11..14) "людям" else if (likes % 10 == 1) "человеку" else "людям"
+
 
     println("Понравилось $likes $people")
 }
 
 fun musicLover() {
     val regularCustomer = true
-    val sum = 10111
+    val sum = 15000
 
-    val firstDiscount = if (sum <= 0 && sum <= 1000) 0 else if (sum >= 1001 && sum <= 10_00) 100 else Math.round(sum * 0.05)
-    val secondDiscount = if (regularCustomer) Math.round(sum * 0.01) else 0
+    val firstSum = if (sum <= 0 && sum <= 1000) 0 else if (sum <= 1001 && sum <= 10_000) 100 else Math.round(sum * 0.95)
+    val secondDiscount = if (regularCustomer) firstSum * (0.99) else 0
 
-    val totalSum = sum - firstDiscount - secondDiscount
+    if (regularCustomer) {
+        println("Итоговая стоимость:  $secondDiscount")
+    } else {
+        println("Итоговая стоимость:  $firstSum")
+    }
 
-    println("Итоговая стоимость:  $totalSum")
+
 }
